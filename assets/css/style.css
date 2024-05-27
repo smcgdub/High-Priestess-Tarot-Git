@@ -79,7 +79,7 @@ body {
 }
 
 .generic-green-bg {
-  // background: #79ac56;
+  /* // background: #79ac56; */
   background: #ffffff;
 }
 
@@ -250,4 +250,23 @@ footer {
   text-align: center;
   color: #fff;
   /* Change this to the color you want for the text */
+}
+
+#by-card.active,
+#by-keyword.active {
+  background-color: #212529;
+  opacity: 0.9 !important;
+  color: #e0b53f;
+}
+
+button#by-keyword,
+button#by-card {
+  color: #000;
+}
+
+button#button-addon1,
+button#button-addon2 {
+  background-color: #212529;
+  opacity: 0.9 !important;
+  color: #e0b53f;
 }
