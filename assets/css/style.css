@@ -1,0 +1,253 @@
+/* Global */
+
+/* Google font */
+
+/* Cutive font */
+@import url('https://fonts.googleapis.com/css2?family=Cutive&display=swap');
+
+/* Lobster font */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+/* Margin & padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cutive', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.lobster-font {
+  font-family: 'Lobster', cursive;
+}
+
+.generic-black {
+  color: #020202;
+}
+
+.generic-black-bg {
+  background: #020202;
+}
+
+.generic-dark-grey {
+  color: #212529;
+}
+
+.generic-dark-grey-bg {
+  background: #212529;
+}
+
+.generic-gold {
+  color: #e0b53f !important;
+}
+
+.generic-gold-bg {
+  background: #e0b53f;
+}
+
+.generic-silver {
+  color: #8b9299;
+}
+
+.generic-silver-bg {
+  background: #8b9299;
+}
+
+.generic-pink {
+  color: #ef476f;
+}
+
+.generic-pink-bg {
+  background: #ef476f;
+}
+
+.generic-red {
+  color: #d0323f;
+}
+
+.generic-red-bg {
+  background: #d0323f;
+}
+
+.generic-green {
+  color: #79ac56;
+}
+
+.generic-green-bg {
+  // background: #79ac56;
+  background: #ffffff;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+/* Animate CSS */
+/* This changes all the animations globally */
+:root {
+  --animate-duration: 1400ms;
+  --animate-delay: 0.9s;
+}
+
+.animate__animated.animate__fadeIn {
+  --animate-duration: 2500ms;
+}
+
+/* Navbar */
+.navbar {
+  background: #212529 !important;
+}
+
+ul.dropdown-menu.show {
+  background-color: #212529;
+}
+
+/* Scroll to top button */
+#scrollToTopButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 7px 10px 3px 10px;
+  background-color: #79ac56;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* *Index */
+/* *Success page */
+.index-bg {
+  /* background-image: url('/media/images/index-bg-image.jpg'); */
+  /* background-image: url('/media/images/HPT Banner_250kb.jpg'); */
+  background-image: url('https://www.highpriestesstarot.co.uk/images/HPT Banner_250kb.jpg');
+
+  height: 100vh;
+  /* height: calc(100vh - 60px); */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  /* This will make the hero a flex container */
+  justify-content: center;
+  /* This will center the child elements horizontally */
+  align-items: center;
+  /* This will center the child elements vertically */
+}
+
+.index-text {
+  text-align: center;
+  color: #fff;
+}
+
+.blob {
+  border-radius: 50%;
+  margin: 10px;
+  height: 20px;
+  width: 20px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+  transform: scale(1);
+  animation: pulse 2s infinite;
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); */
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.hide {
+  display: none;
+}
+
+/* #header-image {
+  background-image: url(/media/images/HPT_Banner.webp);
+  height: calc(100vh - 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+
+/* *Footer */
+footer {
+  background: #212529;
+}
+
+.tarot-bg-img {
+  background-image: url(/media/images/tarot-cards.jpg);
+}
+
+
+/* Footer */
+.sub-footer-bg {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.custom-card-img {
+  max-height: 200px;
+  object-fit: cover;
+  /* This will make the image cover the available space without stretching */
+}
+
+/* *Success page */
+.success-page-bg {
+  background-image: url('/media/images/tarot-cards.jpg');
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  /* This will make the hero a flex container */
+  justify-content: center;
+  /* This will center the child elements horizontally */
+  align-items: center;
+  /* This will center the child elements vertically */
+}
+
+.success-text {
+  text-align: center;
+  color: #fff;
+  /* Change this to the color you want for the text */
+}
