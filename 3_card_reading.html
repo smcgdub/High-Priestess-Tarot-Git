@@ -315,39 +315,25 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-      let deck = [{
-          name: 'The Fool',
-          image: 'path/to/image1.jpg',
-          description: 'Im the fool'
-        },
-        {
-          name: 'The Magician',
-          image: 'path/to/image2.jpg',
-          description: 'Im the magician'
-        },
-        {
-          name: 'The High Priest',
-          image: 'path/to/image3.jpg',
-          description: 'Im the high priest'
-        },
-        {
-          name: 'The Empress',
-          image: 'path/to/image4.jpg',
-          description: 'Im the empress'
-        },
-        {
-          name: 'The Emperor',
-          image: 'path/to/image5.jpg',
-          description: 'Im the emperor'
-        },
-      ];
-
+      let deck = [];
       let drawCount = 0;
 
-      // Reset reading by reloading the page function
-      // function resetReading() {
-      //   location.reload();
-      // }
+      // Fetch the data from the JSON file
+      fetch('tarot-card-meanings-2021.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          deck = data; // Assign the fetched data to the deck variable
+          // Shuffle the deck
+          shuffleDeck();
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+        });
 
       function resetReading() {
         // Reset the draw count
@@ -356,36 +342,14 @@
         // Clear the drawn cards
         document.getElementById('cardContainer').innerHTML = '';
 
-        // Recreate the deck
-        deck = [{
-            name: 'The Fool',
-            image: 'path/to/image1.jpg',
-            description: 'Im the fool'
-          },
-          {
-            name: 'The Magician',
-            image: 'path/to/image2.jpg',
-            description: 'Im the magician'
-          },
-          {
-            name: 'The High Priestess',
-            image: 'path/to/image3.jpg',
-            description: 'Im the high priestess'
-          },
-          {
-            name: 'The Empress',
-            image: 'path/to/image4.jpg',
-            description: 'Im the empress'
-          },
-          {
-            name: 'The Emperor',
-            image: 'path/to/image5.jpg',
-            description: 'Im the emperor'
-          },
-        ];
-
-        // Shuffle the deck
-        shuffleDeck();
+        // Fetch the deck again
+        fetch('tarot-card-meanings-2021.json')
+          .then(response => response.json())
+          .then(data => {
+            deck = data; // Assign the fetched data to the deck variable
+            // Shuffle the deck
+            shuffleDeck();
+          });
 
         // Enable the draw button
         document.getElementById('drawButton').disabled = false;
@@ -406,14 +370,23 @@
 
         const card = deck.pop();
         const cardElement = document.createElement('div');
-        cardElement.innerHTML = `
-        <h2>${card.name}</h2>
-        <img src="${card.image}" alt="${card.name}">
-        <p>${card.description}</p>
-      `;
+        const cardName = document.createElement('h2');
+        const cardImage = document.createElement('img');
+        const cardDescription = document.createElement('p');
+
+        cardName.textContent = card.Tarot_card;
+        cardImage.src = card.image;
+        // cardImage.alt = card.name;
+        cardDescription.textContent = card.Message;
+
+        cardElement.appendChild(cardName);
+        cardElement.appendChild(cardImage);
+        cardElement.appendChild(cardDescription);
+
         document.getElementById('cardContainer').appendChild(cardElement);
         drawCount++;
       }
+
 
       shuffleDeck();
       document.getElementById('drawButton').addEventListener('click', drawCard);
