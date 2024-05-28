@@ -87,6 +87,21 @@ body {
   text-decoration: underline;
 }
 
+/* Scroll to top button */
+#scrollToTopButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 7px 10px 3px 10px;
+  /* background-color: #79ac56; */
+  background-color: ed;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 2;
+}
+
 /* Animate CSS */
 /* This changes all the animations globally */
 :root {
@@ -113,7 +128,7 @@ ul.dropdown-menu.show {
   bottom: 20px;
   right: 20px;
   padding: 7px 10px 3px 10px;
-  background-color: #79ac56;
+  background-color: #e0b53f;
   color: white;
   border: none;
   cursor: pointer;

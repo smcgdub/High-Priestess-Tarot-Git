@@ -1,5 +1,7 @@
-// Animate on scroll JS
-AOS.init();
+// Scroll to top button JS code
+window.onscroll = function () {
+  scrollFunction()
+};
 
 // Scroll to top button
 function scrollFunction() {
@@ -17,3 +19,6 @@ function scrollToTop() {
     behavior: 'smooth'
   });
 }
+
+// Animate on scroll JS
+AOS.init();
