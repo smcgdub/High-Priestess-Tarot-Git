@@ -168,6 +168,13 @@
 
         <h1 class="text-center mt-4">Im the 3x card reading page</h1>
 
+        <button id="drawButton">Draw Card</button>
+        <button id="resetButton">Reset</button>
+
+        <br><br>
+
+        <div id="cardContainer"></div>
+
       </div>
     </div>
   </div>
@@ -305,6 +312,114 @@
 
   <!-- Animate on scroll JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      let deck = [{
+          name: 'The Fool',
+          image: 'path/to/image1.jpg',
+          description: 'Im the fool'
+        },
+        {
+          name: 'The Magician',
+          image: 'path/to/image2.jpg',
+          description: 'Im the magician'
+        },
+        {
+          name: 'The High Priest',
+          image: 'path/to/image3.jpg',
+          description: 'Im the high priest'
+        },
+        {
+          name: 'The Empress',
+          image: 'path/to/image4.jpg',
+          description: 'Im the empress'
+        },
+        {
+          name: 'The Emperor',
+          image: 'path/to/image5.jpg',
+          description: 'Im the emperor'
+        },
+      ];
+
+      let drawCount = 0;
+
+      // Reset reading by reloading the page function
+      // function resetReading() {
+      //   location.reload();
+      // }
+
+      function resetReading() {
+        // Reset the draw count
+        drawCount = 0;
+
+        // Clear the drawn cards
+        document.getElementById('cardContainer').innerHTML = '';
+
+        // Recreate the deck
+        deck = [{
+            name: 'The Fool',
+            image: 'path/to/image1.jpg',
+            description: 'Im the fool'
+          },
+          {
+            name: 'The Magician',
+            image: 'path/to/image2.jpg',
+            description: 'Im the magician'
+          },
+          {
+            name: 'The High Priestess',
+            image: 'path/to/image3.jpg',
+            description: 'Im the high priestess'
+          },
+          {
+            name: 'The Empress',
+            image: 'path/to/image4.jpg',
+            description: 'Im the empress'
+          },
+          {
+            name: 'The Emperor',
+            image: 'path/to/image5.jpg',
+            description: 'Im the emperor'
+          },
+        ];
+
+        // Shuffle the deck
+        shuffleDeck();
+
+        // Enable the draw button
+        document.getElementById('drawButton').disabled = false;
+      }
+
+      function shuffleDeck() {
+        for (let i = deck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+      }
+
+      function drawCard() {
+        if (deck.length === 0 || drawCount >= 3) {
+          document.getElementById('drawButton').disabled = true;
+          return;
+        }
+
+        const card = deck.pop();
+        const cardElement = document.createElement('div');
+        cardElement.innerHTML = `
+        <h2>${card.name}</h2>
+        <img src="${card.image}" alt="${card.name}">
+        <p>${card.description}</p>
+      `;
+        document.getElementById('cardContainer').appendChild(cardElement);
+        drawCount++;
+      }
+
+      shuffleDeck();
+      document.getElementById('drawButton').addEventListener('click', drawCard);
+      document.getElementById('resetButton').addEventListener('click', resetReading);
+    });
+  </script>
 
   <!-- JS Sheet -->
   <script src="/assets/javascript/app.js"></script>
