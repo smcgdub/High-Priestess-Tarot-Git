@@ -168,6 +168,9 @@
 
         <h1 class="text-center mt-4">Im the 5x card reading page</h1>
 
+        <!-- <input type="file" id="input"> -->
+        <div id="cardsContainer"></div>
+
       </div>
     </div>
   </div>
@@ -306,8 +309,35 @@
   <!-- Animate on scroll JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <!-- xlsx library -->
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
   <!-- JS Sheet -->
   <script src="/assets/javascript/app.js"></script>
+
+  <script>
+    window.onload = function () {
+      fetch('tarot-card-meanings-2021.json') // Replace with the path to your JSON file
+        .then(response => response.json())
+        .then(jsonData => {
+          var cardsContainer = document.getElementById('cardsContainer');
+          jsonData.forEach(function (card) {
+            var cardElement = document.createElement('div');
+            var cardTitle = document.createElement('h5');
+            var cardDescription = document.createElement('p');
+
+            cardTitle.textContent = card
+              .Tarot_card; // Replace 'name' with the actual column name in your Excel file
+            cardDescription.textContent = card
+              .Message; // Replace 'description' with the actual column name in your Excel file
+
+            cardElement.appendChild(cardTitle);
+            cardElement.appendChild(cardDescription);
+            cardsContainer.appendChild(cardElement);
+          });
+        });
+    };
+  </script>
 </body>
 
 </html>
