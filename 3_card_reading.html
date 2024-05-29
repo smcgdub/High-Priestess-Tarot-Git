@@ -61,7 +61,7 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9VVC7WT" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -166,12 +166,24 @@
     <div class="row">
       <div class="col-12">
 
-        <h1 class="text-center mt-4">Im the 3x card reading page</h1>
+        <h1 class="text-center mt-4">3x card reading</h1>
 
-        <button id="drawButton">Draw Card</button>
-        <button id="resetButton">Reset</button>
+        <hr>
 
-        <br><br>
+        <div class="text-center">
+
+          <button type="button" id="drawButton" class="btn">Draw Card</button>
+          <button type="button" id="resetButton" class="btn">Reset</button>
+        </div>
+
+        <!-- <br><br> -->
+
+      </div>
+    </div>
+
+    <!-- Row for cards drawn to be displayed -->
+    <div class="row">
+      <div class="col-12">
 
         <div id="cardContainer"></div>
 
@@ -183,7 +195,7 @@
   <br>
 
   <!-- Footer -->
-  <footer class="bg-dark text-center text-white">
+  <footer class="bg-dark text-center text-white mt-auto">
 
     <!-- Grid container -->
     <div class="container p-4">
