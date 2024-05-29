@@ -129,7 +129,7 @@
             <ul class="dropdown-menu">
 
               <!-- All cards -->
-              <li><a class="dropdown-item lobster-font generic-gold" href="all_cards.html">All cards</a></li>
+              <li><a class="dropdown-item lobster-font generic-gold" href="search_cards.html">Search Cards</a></li>
 
               <!-- Card meanings -->
               <li><a class="dropdown-item lobster-font generic-gold" href="tarot_card_meaning.html">Card meanings</a>
@@ -166,9 +166,27 @@
     <div class="row">
       <div class="col-12">
 
+        <!-- Page title -->
         <h1 class="text-center mt-4">Card from Json Feed</h1>
 
-        <!-- <input type="file" id="input"> -->
+        <!-- Search bar div -->
+        <div class="mb-3">
+
+          <!-- Search bar input div -->
+          <div class="input-group">
+
+            <!-- Search bar -->
+            <input type="text" id="tarot-card-search" class="form-control" placeholder="&#128270; Search by card name"
+              aria-label="Search by card name" aria-describedby="search-help">
+
+          </div>
+
+          <!-- Search bar help text -->
+          <div id="search-help" class="form-text">Search via card name</div>
+
+        </div>
+
+        <!-- Card feed from JSON generated here -->
         <div id="cardsContainer"></div>
 
       </div>
@@ -336,6 +354,59 @@
             cardsContainer.appendChild(cardElement);
           });
         });
+    };
+  </script>
+
+  <script>
+    window.onload = function () {
+      let cards = [];
+      let cardsContainer = document.getElementById('cardsContainer');
+
+      fetch('tarot-card-meanings-2021.json')
+        .then(response => response.json())
+        .then(data => {
+          cards = data;
+
+          // Display all the cards initially
+          updateDisplayedCards(cards);
+
+          // Get the input element
+          let input = document.getElementById('tarot-card-search');
+
+          // Add an event listener for the input event
+          input.addEventListener('input', function () {
+            // Get the current value of the input field
+            let searchValue = this.value.toLowerCase();
+
+            // Filter the cards
+            let filteredCards = cards.filter(card =>
+              card.Tarot_card.toLowerCase().includes(searchValue)
+            );
+
+            // Update the displayed cards
+            updateDisplayedCards(filteredCards);
+          });
+        })
+        .catch(error => console.error('Error:', error));
+
+      function updateDisplayedCards(cards) {
+        // Clear the cardsContainer
+        cardsContainer.innerHTML = '';
+
+        // Add the filtered cards to the cardsContainer
+        cards.forEach(function (card) {
+          var cardElement = document.createElement('div');
+          var cardTitle = document.createElement('h5');
+          var cardDescription = document.createElement('p');
+
+          cardTitle.textContent = card.Tarot_card;
+          cardDescription.textContent = card.Message;
+
+          cardElement.appendChild(cardTitle);
+          cardElement.appendChild(cardDescription);
+          cardsContainer.appendChild(cardElement);
+        });
+      }
     };
   </script>
 </body>

@@ -285,3 +285,17 @@ button#button-addon2 {
   opacity: 0.9 !important;
   color: #e0b53f;
 }
+
+/* 3x Card Reading */
+#drawButton,
+#resetButton {
+  border: 1px solid #e0b53f;
+  color: #e0b53f;
+}
+
+#drawButton:hover,
+#resetButton:hover {
+  background-color: #212529;
+  opacity: 0.9 !important;
+  color: #fff
+}

@@ -123,7 +123,7 @@
             <ul class="dropdown-menu">
 
               <!-- All cards -->
-              <li><a class="dropdown-item lobster-font generic-gold" href="all_cards.html">All cards</a></li>
+              <li><a class="dropdown-item lobster-font generic-gold" href="search_cards.html">Search Cards</a></li>
 
               <!-- Card meanings -->
               <li><a class="dropdown-item lobster-font generic-gold" href="tarot_card_meaning.html">Card meanings</a>
@@ -245,6 +245,9 @@
       });
       new google.maps.Geocoder().geocode({
         address: '120 Lisson grove'
+        "image": "https://www.watergypsytarot.com/attachments/Image/wheel_of_fortune.jpg",
+        "image": "https://www.watergypsytarot.com/attachments/Image/wheel_of_fortune.jpg"
+
       }, function (results, status) {
         if (status == 'OK') {
           map.panTo(results[0].geometry.location);
