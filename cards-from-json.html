@@ -61,7 +61,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9VVC7WT" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -163,43 +163,23 @@
 
   <!-- Page container -->
   <div class="container">
-
-    <!-- Row for page title and action buttons -->
     <div class="row">
       <div class="col-12">
 
-        <!-- Page title -->
-        <h1 class="text-center mt-4">3x card reading</h1>
+        <h1 class="text-center mt-4">Card from Json Feed</h1>
 
-        <!-- Horizontal line -->
-        <hr>
-
-        <!-- Action buttons div -->
-        <div class="text-center mb-2">
-
-          <!-- Draw card button -->
-          <button type="button" id="drawButton" class="btn">Draw Card</button>
-
-          <!-- Reset button -->
-          <button type="button" id="resetButton" class="btn">Reset</button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Row for cards drawn to be displayed -->
-    <div class="row">
-      <div class="col-12">
-
-        <!-- Card container -->
-        <div id="cardContainer"></div>
+        <!-- <input type="file" id="input"> -->
+        <div id="cardsContainer"></div>
 
       </div>
     </div>
   </div>
 
+  <!-- Line break -->
+  <br>
+
   <!-- Footer -->
-  <footer class="bg-dark text-center text-white mt-auto">
+  <footer class="bg-dark text-center text-white">
 
     <!-- Grid container -->
     <div class="container p-4">
@@ -329,168 +309,35 @@
   <!-- Animate on scroll JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-
-      // variables
-      let deck = [];
-      let drawCount = 0;
-
-      // Fetch the data from the JSON file
-      fetch('tarot-card-meanings-2021.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          deck = data; // Assign the fetched data to the deck variable
-          // Shuffle the deck
-          shuffleDeck();
-        })
-        .catch(error => {
-          console.error('There has been a problem with your fetch operation:', error);
-        });
-
-      // Reset the reading function
-      function resetReading() {
-        // Reset the draw count
-        drawCount = 0;
-
-        // Clear the drawn cards
-        document.getElementById('cardContainer').innerHTML = '';
-
-        // Fetch the deck again
-        fetch('tarot-card-meanings-2021.json')
-
-          // Parse the JSON data
-          .then(response => response.json())
-
-          // Assign the fetched data to the deck variable
-          .then(data => {
-            deck = data; // Assign the fetched data to the deck variable
-
-            // Shuffle the deck
-            shuffleDeck();
-          });
-
-        // Enable the draw button
-        document.getElementById('drawButton').disabled = false;
-      }
-
-      // Shuffle the deck function
-      function shuffleDeck() {
-
-        // Shuffle the deck
-        for (let i = deck.length - 1; i > 0; i--) {
-
-          // Generate a random number between 0 and i
-          const j = Math.floor(Math.random() * (i + 1));
-
-          // Swap the cards at positions i and j
-          [deck[i], deck[j]] = [deck[j], deck[i]];
-        }
-      }
-
-      // Draw a card from the deck function
-      function drawCard() {
-
-        // If the deck is empty or the draw count is 3, disable the draw button
-        if (deck.length === 0 || drawCount >= 3) {
-
-          // Disable the draw button
-          document.getElementById('drawButton').disabled = true;
-
-          // Return from the function
-          return;
-        }
-
-        const card = deck.pop();
-        const cardElement = document.createElement('div');
-        const cardName = document.createElement('h2');
-        const cardImage = document.createElement('img');
-        const cardDescription = document.createElement('p');
-
-        cardName.textContent = card.Tarot_card;
-        cardImage.src = card.image;
-        // cardImage.alt = card.name;
-        cardDescription.textContent = card.Message;
-
-        cardElement.appendChild(cardName);
-        cardElement.appendChild(cardImage);
-        cardElement.appendChild(cardDescription);
-
-        document.getElementById('cardContainer').appendChild(cardElement);
-        drawCount++;
-      }
-
-
-      function drawCard() {
-        // If the deck is empty or the draw count is 3, disable the draw button
-        if (deck.length === 0 || drawCount >= 3) {
-          // Disable the draw button
-          document.getElementById('drawButton').disabled = true;
-          // Return from the function
-          return;
-        }
-        const card = deck.pop();
-
-        // Create new card structure
-        const cardElement = document.createElement('div');
-        cardElement.className = "card mb-3";
-        cardElement.style.maxWidth = "100%";
-
-        const row = document.createElement('div');
-        row.className = "row g-0";
-        cardElement.appendChild(row);
-
-        const imgCol = document.createElement('div');
-        imgCol.className = "col-md-4";
-        row.appendChild(imgCol);
-
-        const cardImage = document.createElement('img');
-        cardImage.className = "img-fluid rounded-start";
-        cardImage.src = card.image;
-        imgCol.appendChild(cardImage);
-
-        const textCol = document.createElement('div');
-        textCol.className = "col-md-8";
-        row.appendChild(textCol);
-
-        const cardBody = document.createElement('div');
-        cardBody.className = "card-body";
-        textCol.appendChild(cardBody);
-
-        const cardTitle = document.createElement('h5');
-        cardTitle.className = "card-title";
-        cardTitle.textContent = card.Tarot_card;
-        cardBody.appendChild(cardTitle);
-
-        const cardDescription = document.createElement('p');
-        cardDescription.className = "card-text";
-        cardDescription.textContent = card.Message;
-        cardBody.appendChild(cardDescription);
-
-        const cardText = document.createElement('p');
-        cardText.className = "card-text";
-        cardText.innerHTML = '<small class="text-body-secondary">Last updated 3 mins ago</small>';
-        cardBody.appendChild(cardText);
-
-        document.getElementById('cardContainer').appendChild(cardElement);
-        drawCount++;
-      }
-
-
-      // Add event listeners to the draw and reset buttons
-      shuffleDeck();
-      document.getElementById('drawButton').addEventListener('click', drawCard);
-      document.getElementById('resetButton').addEventListener('click', resetReading);
-    });
-  </script>
+  <!-- xlsx library -->
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
   <!-- JS Sheet -->
   <script src="/assets/javascript/app.js"></script>
+
+  <script>
+    window.onload = function () {
+      fetch('tarot-card-meanings-2021.json') // Replace with the path to your JSON file
+        .then(response => response.json())
+        .then(jsonData => {
+          var cardsContainer = document.getElementById('cardsContainer');
+          jsonData.forEach(function (card) {
+            var cardElement = document.createElement('div');
+            var cardTitle = document.createElement('h5');
+            var cardDescription = document.createElement('p');
+
+            cardTitle.textContent = card
+              .Tarot_card; // Replace 'name' with the actual column name in your Excel file
+            cardDescription.textContent = card
+              .Message; // Replace 'description' with the actual column name in your Excel file
+
+            cardElement.appendChild(cardTitle);
+            cardElement.appendChild(cardDescription);
+            cardsContainer.appendChild(cardElement);
+          });
+        });
+    };
+  </script>
 </body>
 
 </html>

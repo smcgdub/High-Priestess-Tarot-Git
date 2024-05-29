@@ -329,6 +329,7 @@
   <!-- Animate on scroll JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  <!-- Custom JS -->
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -425,10 +426,9 @@
         drawCount++;
       }
 
-
       function drawCard() {
         // If the deck is empty or the draw count is 3, disable the draw button
-        if (deck.length === 0 || drawCount >= 3) {
+        if (deck.length === 0 || drawCount >= 5) {
           // Disable the draw button
           document.getElementById('drawButton').disabled = true;
           // Return from the function
