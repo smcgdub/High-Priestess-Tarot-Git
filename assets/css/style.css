@@ -309,6 +309,7 @@ button#button-addon2 {
 }
 
 /* *Contact us page */
-iframe {
-  min-width: 100% !important;
+#map {
+  height: 400px;
+  width: 100%;
 }
