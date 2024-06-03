@@ -299,3 +299,8 @@ button#button-addon2 {
   opacity: 0.9 !important;
   color: #fff
 }
+
+/* *Contact us page */
+iframe {
+  min-width: 100% !important;
+}
