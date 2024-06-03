@@ -223,6 +223,14 @@ a:focus {
   text-decoration: none;
 }
 
+/* *Meet Nicola */
+#nicola-image {
+  width: 100% !important;
+}
+
+#meet-nicola-card {
+  border: none;
+}
 
 /* *Footer */
 footer {
