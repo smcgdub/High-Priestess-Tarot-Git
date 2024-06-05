@@ -88,19 +88,18 @@ body {
 }
 
 /* Scroll to top button */
-#scrollToTopButton {
+/* #scrollToTopButton {
   position: fixed;
   bottom: 20px;
   right: 20px;
   padding: 7px 10px 3px 10px;
-  /* background-color: #79ac56; */
-  background-color: ed;
+  background-color: #79ac56;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 4px;
   z-index: 2;
-}
+} */
 
 /* Animate CSS */
 /* This changes all the animations globally */
