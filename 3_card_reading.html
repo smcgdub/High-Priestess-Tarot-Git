@@ -517,6 +517,9 @@
 
         // Enable the draw button
         document.getElementById('drawButton').disabled = false;
+
+        // Reset the button text
+        document.getElementById('drawButton').textContent = 'Draw Card';
       }
 
       // Shuffle the deck function
@@ -667,6 +670,7 @@
         cardBody.appendChild(cardText);
         document.getElementById('cardContainer').appendChild(cardElement);
         drawCount++;
+        document.getElementById('drawButton').textContent = `Draw Card (${drawCount})`;
       }
 
       // Add event listeners to the draw and reset buttons
