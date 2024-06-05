@@ -164,9 +164,6 @@
   <!-- Page container -->
   <div class="container">
 
-    <!-- !These can be deleted once the page structure is completed -->
-    <br>
-
     <!-- Row for page title and action buttons -->
     <div class="row">
       <div class="col-12">
@@ -342,6 +339,44 @@
       let deck = [];
       let drawCount = 0;
 
+      // Function to adjust card image height
+      function adjustCardImageHeight() {
+        const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
+        cardImages.forEach(cardImage => {
+          if (window.matchMedia("(min-width: 768px)").matches) {
+            cardImage.style.height = "200px";
+          } else {
+            cardImage.style.height = "auto";
+          }
+        });
+      }
+
+      // function adjustCardImageHeight() {
+      //   const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
+      //   const cardTexts = document.querySelectorAll('.card-text.text-sm-center.text-md-start');
+
+      //   cardImages.forEach(cardImage => {
+      //     if (window.matchMedia("(min-width: 768px)").matches) {
+      //       cardImage.style.height = "200px";
+      //     } else {
+      //       cardImage.style.height = "auto";
+      //     }
+      //   });
+
+      //   cardTexts.forEach(cardText => {
+      //     if (window.matchMedia("(min-width: 768px)").matches) {
+      //       cardText.classList.remove('text-md-start');
+      //       cardText.classList.add('text-sm-center');
+      //     } else {
+      //       cardText.classList.add('text-sm-center');
+      //     }
+      //   });
+
+      // }
+
+      // Add event listener for window resize
+      window.addEventListener('resize', adjustCardImageHeight);
+
       // Fetch the data from the JSON file
       fetch('tarot-card-meanings-2021.json')
         .then(response => {
@@ -415,7 +450,7 @@
         // Create new card structure
         const cardElement = document.createElement('div');
         cardElement.className = "card mb-3";
-        cardElement.style.maxWidth = "90%";
+        cardElement.style.maxWidth = "80%";
         cardElement.style.margin = "auto";
         const row = document.createElement('div');
         row.className = "row g-0";
@@ -426,6 +461,9 @@
         const cardImage = document.createElement('img');
         cardImage.className = "img-fluid rounded-start";
         cardImage.style.height = "200px";
+
+        adjustCardImageHeight();
+
         cardImage.src = card.image;
         imgCol.appendChild(cardImage);
         const textCol = document.createElement('div');
