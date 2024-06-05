@@ -169,7 +169,7 @@
       <div class="col-12">
 
         <!-- Page title -->
-        <h1 class="text-center mt-4">Card from Json Feed</h1>
+        <h1 class="text-center mt-4 text-capitalize lobster-font">Tarot card meanings and messages from the cards </h1>
 
         <!-- Search bar div -->
         <div class="mb-3">
@@ -502,11 +502,11 @@
       fetch('tarot-card-meanings-2021.json') // Replace with the path to your JSON file
         .then(response => response.json())
         .then(jsonData => {
-          var cardsContainer = document.getElementById('cardsContainer');
+          let cardsContainer = document.getElementById('cardsContainer');
           jsonData.forEach(function (card) {
-            var cardElement = document.createElement('div');
-            var cardTitle = document.createElement('h5');
-            var cardDescription = document.createElement('p');
+            let cardElement = document.createElement('div');
+            let cardTitle = document.createElement('h5');
+            let cardDescription = document.createElement('p');
 
             cardTitle.textContent = card
               .Tarot_card; // Replace 'name' with the actual column name in your Excel file
@@ -559,9 +559,9 @@
 
         // Add the filtered cards to the cardsContainer
         cards.forEach(function (card) {
-          var cardElement = document.createElement('div');
-          var cardTitle = document.createElement('h5');
-          var cardDescription = document.createElement('p');
+          let cardElement = document.createElement('div');
+          let cardTitle = document.createElement('h5');
+          let cardDescription = document.createElement('p');
 
           cardTitle.textContent = card.Tarot_card;
           cardDescription.textContent = card.Message;
