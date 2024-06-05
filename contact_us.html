@@ -74,86 +74,103 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <!-- Navbar container -->
     <div class="container">
 
       <!-- Navbar brand -->
       <a class="navbar-brand" href="#"></a>
 
       <!-- Navbar toggler -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 
         <!-- Navbar toggler icon -->
         <i class="fa-solid fa-ellipsis generic-gold"></i>
+
       </button>
 
-      <!-- Navbar links -->
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- Navbar collapse -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
         <!-- Navbar links -->
-        <div class="navbar-nav mx-auto h4">
+        <ul class="navbar-nav mx-auto fs-4">
 
-          <!-- Home link -->
-          <a class="nav-link active lobster-font generic-gold" aria-current="page" href="index.html">Home</a>
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link active lobster-font generic-gold" aria-current="page" href="index.html">Home</a>
+          </li>
 
           <!-- About dropdown -->
           <li class="nav-item dropdown">
+
+            <!-- Dropdown link -->
             <a class="nav-link dropdown-toggle lobster-font generic-gold" href="#" role="button"
               data-bs-toggle="dropdown" aria-expanded="false">
               About
             </a>
 
-            <!-- Dropdown links -->
+            <!-- Dropdown menu -->
             <ul class="dropdown-menu">
 
               <!-- Meet Nicola -->
-              <li>
-                <a class="dropdown-item lobster-font generic-gold" href="meet_nicola.html">Meet Nicola</a>
-              </li>
+              <li><a class="dropdown-item lobster-font generic-gold" href="meet_nicola.html">Meet Nicola</a></li>
 
               <!-- Testimonials -->
-              <li>
-                <a class="dropdown-item lobster-font generic-gold" href="testimonials.html">Testimonials</a>
-              </li>
-
+              <li><a class="dropdown-item lobster-font generic-gold" href="testimonials.html">Testimonials</a></li>
             </ul>
           </li>
 
-          <!-- Pricing link -->
-          <a class="nav-link lobster-font generic-gold" href="pricing.html">Pricing</a>
+          <!-- Pricing -->
+          <li class="nav-item">
+            <a class="nav-link lobster-font generic-gold" href="pricing.html">Pricing</a>
+          </li>
 
           <!-- Tarot info dropdown -->
-          <li class="nav-item dropdown lobster-font">
+          <li class="nav-item dropdown">
 
-            <a class="nav-link dropdown-toggle generic-gold" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Tarot Info
+            <!-- Dropdown link -->
+            <a class="nav-link dropdown-toggle text-capitalize lobster-font generic-gold" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Tarot info
             </a>
 
-            <!-- Dropdown links -->
+            <!-- Dropdown menu -->
             <ul class="dropdown-menu">
 
-              <!-- All cards -->
-              <li><a class="dropdown-item lobster-font generic-gold" href="search_cards.html">Search Cards</a></li>
+              <!-- Search Cards -->
+              <li>
+                <a class="dropdown-item text-capitalize lobster-font generic-gold" href="search_cards.html">Search
+                  cards</a>
+              </li>
 
               <!-- Card meanings -->
-              <li><a class="dropdown-item lobster-font generic-gold" href="tarot_card_meaning.html">Card meanings</a>
+              <li>
+                <a class="dropdown-item text-capitalize lobster-font generic-gold" href="tarot_card_meaning.html">Card
+                  meanings</a>
               </li>
 
-              <!-- 3x card reading -->
-              <li><a class="dropdown-item lobster-font generic-gold" href="3_card_reading.html">3x Card reading</a>
+              <!-- 3x Card reading -->
+              <li>
+                <a class="dropdown-item text-capitalize lobster-font generic-gold" href="3_card_reading.html">3x card
+                  reading</a>
               </li>
 
-              <!-- 5x card reading -->
-              <li><a class="dropdown-item lobster-font generic-gold" href="5_card_reading.html">5x Card reading</a>
+              <!-- 5x Card reading -->
+              <li>
+                <a class="dropdown-item text-capitalize lobster-font generic-gold" href="5_card_reading.html">5x card
+                  reading</a>
               </li>
 
             </ul>
           </li>
 
-          <!-- Contact link -->
-          <a class="nav-link lobster-font generic-gold" href="contact_us.html">Contact &amp; Location</a>
-        </div>
+          <!-- Contact & location -->
+          <li class="nav-item">
+            <a class="nav-link text-capitalize lobster-font generic-gold" href="contact_us.html">Contact & location</a>
+          </li>
+
+        </ul>
       </div>
     </div>
   </nav>
