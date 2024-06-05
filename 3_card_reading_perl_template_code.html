@@ -167,38 +167,141 @@
     <!-- !These can be deleted once the page structure is completed -->
     <br>
 
-    <!-- Row for page title and action buttons -->
-    <div class="row">
-      <div class="col-12">
+    <!-- !You can delete this comment and the text below Chris -->
+    <!-- <p class="mb-1">
+      The cards below are the hard coded template for chris to use in his perl script. Stephen has added
+      all of the css and classes so chris not to adjust
+    </p> -->
 
-        <!-- Page title -->
-        <h1 class="text-center mt-4 text-capitalize">3x card reading</h1>
+    <!-- !This is the hard coded templates for Chris to run his perl script to -->
+    <!-- This line of code below controls how many cards will appear depending on the screen size -->
+    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-3 g-4">
 
-        <!-- Horizontal line -->
-        <hr>
+      <!-- Card 1 column -->
+      <div class="col">
 
-        <!-- Action buttons div -->
-        <div class="text-center mb-4">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="row g-0">
 
-          <!-- Draw card button -->
-          <button type="button" id="drawButton" class="btn me-3">Draw Card</button>
+            <!-- Image column -->
+            <div class="col-md-4">
 
-          <!-- Reset button -->
-          <button type="button" id="resetButton" class="btn">Reset</button>
+              <!-- Image -->
+              <img src="/assets/images/placeholder-portrait.jpg" class="img-fluid rounded-start" alt="...">
+
+            </div>
+
+            <!-- Text column -->
+            <div class="col-md-8">
+
+              <!-- Card body -->
+              <div class="card-body">
+
+                <!-- Card period -->
+                <h5 class="card-title text-sm-center text-md-start mb-2">{{ Card Period }}</h5>
+
+                <!-- Card title -->
+                <h5 class="text-sm-center text-md-start">{{ Card Title }}</h5>
+
+                <!-- Card text -->
+                <p class="card-text text-sm-center text-md-start">This is the card meaning, This is the card meaning,
+                  This is the card
+                  meaning.
+                </p>
+
+                <!-- Card footer -->
+                <p class="card-text text-sm-center text-md-start"><small class="text-body-secondary">Last updated 3 mins
+                    ago</small>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col">
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="row g-0">
+
+            <!-- Image column -->
+            <div class="col-md-4">
+
+              <!-- Image -->
+              <img src="/assets/images/placeholder-portrait.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+
+            <!-- Text column -->
+            <div class="col-md-8">
+
+              <!-- Card body -->
+              <div class="card-body">
+
+                <!-- Card period -->
+                <h5 class="card-title text-sm-center text-md-start">{{ Card Period }}</h5>
+
+                <!-- Card title -->
+                <h5 class="text-sm-center text-md-start">{{ Card Title }}</h5>
+
+                <!-- Card text -->
+                <p class="card-text text-sm-center text-md-start">This is the card meaning, This is the card meaning,
+                  This is the card meaning.</p>
+
+                <!-- Card footer -->
+                <p class="card-text text-sm-center text-md-start"><small class="text-body-secondary">Last updated 3 mins
+                    ago</small></p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col">
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="row g-0">
+
+            <!-- Image column -->
+            <div class="col-md-4">
+
+              <!-- Image -->
+              <img src="/assets/images/placeholder-portrait.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+
+            <!-- Text column -->
+            <div class="col-md-8">
+
+              <!-- Card body -->
+              <div class="card-body">
+
+                <!-- Card period -->
+                <h5 class="card-title text-sm-center text-md-start">{{ Card Period }}</h5>
+
+                <!-- Card title -->
+                <h5 class="text-sm-center text-md-start">{{ Card Title }}</h5>
+
+                <!-- Card text -->
+                <p class="card-text text-sm-center text-md-start">This is the card meaning, This is the card meaning,
+                  This is the card meaning.</p>
+
+                <!-- Card footer -->
+                <p class="card-text text-sm-center text-md-start"><small class="text-body-secondary">Last updated 3 mins
+                    ago</small></p>
+              </div>
+
+            </div>
+          </div>
         </div>
 
       </div>
     </div>
-
-    <!-- Row for cards drawn to be displayed -->
-    <div class="row">
-      <div class="col-12">
-
-        <!-- Card container -->
-        <div id="cardContainer"></div>
-
-      </div>
-    </div>
+    <!-- This is the hard coded templates for Chris to run his perl script to end -->
 
   </div>
 
@@ -333,132 +436,6 @@
 
   <!-- Animate on scroll JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <!-- Custom JS for the dealing of 3x cards from the json file. -->
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-
-      // variables
-      let deck = [];
-      let drawCount = 0;
-
-      // Fetch the data from the JSON file
-      fetch('tarot-card-meanings-2021.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          deck = data; // Assign the fetched data to the deck variable
-          // Shuffle the deck
-          shuffleDeck();
-        })
-        .catch(error => {
-          console.error('There has been a problem with your fetch operation:', error);
-        });
-
-      // Reset the reading function
-      function resetReading() {
-        // Reset the draw count
-        drawCount = 0;
-
-        // Clear the drawn cards
-        document.getElementById('cardContainer').innerHTML = '';
-
-        // Fetch the deck again
-        fetch('tarot-card-meanings-2021.json')
-
-          // Parse the JSON data
-          .then(response => response.json())
-
-          // Assign the fetched data to the deck variable
-          .then(data => {
-            deck = data; // Assign the fetched data to the deck variable
-
-            // Shuffle the deck
-            shuffleDeck();
-          });
-
-        // Enable the draw button
-        document.getElementById('drawButton').disabled = false;
-
-        // Reset the button text
-        document.getElementById('drawButton').textContent = 'Draw Card';
-      }
-
-      // Shuffle the deck function
-      function shuffleDeck() {
-
-        // Shuffle the deck
-        for (let i = deck.length - 1; i > 0; i--) {
-
-          // Generate a random number between 0 and i
-          const j = Math.floor(Math.random() * (i + 1));
-
-          // Swap the cards at positions i and j
-          [deck[i], deck[j]] = [deck[j], deck[i]];
-        }
-      }
-
-      // Draw a card function
-      function drawCard() {
-        // If the deck is empty or the draw count is 3, disable the draw button
-        if (deck.length === 0 || drawCount >= 3) {
-          // Disable the draw button
-          document.getElementById('drawButton').disabled = true;
-          // Return from the function
-          return;
-        }
-        const card = deck.pop();
-        // Create new card structure
-        const cardElement = document.createElement('div');
-        cardElement.className = "card mb-3";
-        cardElement.style.maxWidth = "90%";
-        cardElement.style.margin = "auto";
-        const row = document.createElement('div');
-        row.className = "row g-0";
-        cardElement.appendChild(row);
-        const imgCol = document.createElement('div');
-        imgCol.className = "col-md-3";
-        row.appendChild(imgCol);
-        const cardImage = document.createElement('img');
-        cardImage.className = "img-fluid rounded-start";
-        cardImage.style.height = "200px";
-        cardImage.src = card.image;
-        imgCol.appendChild(cardImage);
-        const textCol = document.createElement('div');
-        textCol.className = "col-md-9";
-        row.appendChild(textCol);
-        const cardBody = document.createElement('div');
-        cardBody.className = "card-body";
-        textCol.appendChild(cardBody);
-        const cardTitle = document.createElement('h5');
-        cardTitle.className = "card-title";
-        // Add the titles for each card
-        const titles = ['The Past', 'The Present', 'The Future'];
-        cardTitle.textContent = titles[drawCount] + ":  " + card.Tarot_card;
-        cardBody.appendChild(cardTitle);
-        const cardDescription = document.createElement('p');
-        cardDescription.className = "card-text";
-        cardDescription.textContent = card.Message;
-        cardBody.appendChild(cardDescription);
-        const cardText = document.createElement('p');
-        cardText.className = "card-text";
-        // cardText.innerHTML = '<small class="text-body-secondary">Last updated 3 mins ago</small>';
-        cardBody.appendChild(cardText);
-        document.getElementById('cardContainer').appendChild(cardElement);
-        drawCount++;
-        document.getElementById('drawButton').textContent = `Draw Card (x${drawCount})`;
-      }
-
-      // Add event listeners to the draw and reset buttons
-      shuffleDeck();
-      document.getElementById('drawButton').addEventListener('click', drawCard);
-      document.getElementById('resetButton').addEventListener('click', resetReading);
-    });
-  </script>
 
   <!-- JS Sheet -->
   <script src="/assets/javascript/app.js"></script>
