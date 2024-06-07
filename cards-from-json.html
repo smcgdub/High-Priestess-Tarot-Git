@@ -520,9 +520,10 @@
   <!-- JS Sheet -->
   <script src="/assets/javascript/app.js"></script>
 
+  <!-- !2 scripts below are the original code. They have been combined into the 3rd script -->
   <script>
     window.onload = function () {
-      fetch('tarot-card-meanings-2021.json') // Replace with the path to your JSON file
+      fetch('tarot-card-meanings-2021.json')
         .then(response => response.json())
         .then(jsonData => {
           let cardsContainer = document.getElementById('cardsContainer');
@@ -530,12 +531,13 @@
             let cardElement = document.createElement('div');
             let cardTitle = document.createElement('h5');
             let cardDescription = document.createElement('p');
+            let cardImage = document.createElement('img');
 
-            cardTitle.textContent = card
-              .Tarot_card; // Replace 'name' with the actual column name in your Excel file
-            cardDescription.textContent = card
-              .Message; // Replace 'description' with the actual column name in your Excel file
+            cardTitle.textContent = card.Tarot_card;
+            cardDescription.textContent = card.Message;
+            cardImage.src = card.image;
 
+            cardElement.appendChild(cardImage); // Append the image to the card element
             cardElement.appendChild(cardTitle);
             cardElement.appendChild(cardDescription);
             cardsContainer.appendChild(cardElement);
@@ -595,6 +597,152 @@
         });
       }
     };
+  </script>
+
+
+
+  <script>
+    // Function to adjust card image height
+    function adjustCardImageHeight() {
+      const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
+      cardImages.forEach(cardImage => {
+        if (window.matchMedia("(min-width: 768px)").matches) {
+          cardImage.style.height = "200px";
+        } else {
+          cardImage.style.height = "auto";
+        }
+      });
+    }
+
+    // Function to center text on card
+    function centerTextOnCard() {
+      const cardTexts = document.querySelectorAll('.card-body .card-title, .card-body .card-text');
+      cardTexts.forEach(cardText => {
+        if (window.matchMedia("(min-width: 768px)").matches) {
+          cardText.classList.add('text-start');
+          cardText.classList.remove('text-center');
+        } else {
+          cardText.classList.add('text-center');
+          cardText.classList.remove('text-start');
+        }
+      });
+    }
+
+    window.onload = function () {
+      let cards = [];
+      let cardsContainer = document.getElementById('cardsContainer');
+
+      // Fetch the JSON data
+      fetch('tarot-card-meanings-2021.json')
+        .then(response => response.json())
+        .then(data => {
+          cards = data;
+
+          // Display all the cards initially
+          updateDisplayedCards(cards);
+          adjustCardImageHeight(); // Adjust card image height after displaying the cards
+          centerTextOnCard(); // Call the function here
+
+          // Get the input element
+          let input = document.getElementById('tarot-card-search');
+
+          // Add an event listener for the input event
+          input.addEventListener('input', function () {
+            // Get the current value of the input field
+            let searchValue = sanitizeInput(this.value.toLowerCase());
+
+            // Filter the cards
+            let filteredCards = cards.filter(card =>
+              card.Tarot_card.toLowerCase().includes(searchValue)
+            );
+
+            // Update the displayed cards
+            updateDisplayedCards(filteredCards);
+          });
+        })
+        // Catch any errors that occur during the fetch
+        .catch(error => {
+          console.error('Error:', error);
+          // Display an error message to the user
+          cardsContainer.textContent = 'An error occurred while loading the cards. Please try again later.';
+        });
+
+      // Function to update the displayed cards
+      function updateDisplayedCards(cards) {
+        // Clear the cardsContainer
+        cardsContainer.innerHTML = '';
+
+        // Add the filtered cards to the cardsContainer
+        cards.forEach(function (card) {
+          let cardElement = document.createElement('div');
+          cardElement.className = "card mb-3";
+
+          let row = document.createElement('div');
+          row.className = "row g-0";
+
+          let imgCol = document.createElement('div');
+          imgCol.className = "col-md-2";
+
+          let cardImage = document.createElement('img');
+          cardImage.src = card.image;
+          cardImage.className = "img-fluid rounded-start";
+          cardImage.alt = card.Tarot_card;
+
+          imgCol.appendChild(cardImage);
+
+          let textCol = document.createElement('div');
+          textCol.className = "col-md-9";
+
+          let cardBody = document.createElement('div');
+          cardBody.className = "card-body";
+
+          let cardTitle = document.createElement('h5');
+          cardTitle.className = "card-title";
+          cardTitle.textContent = card.Tarot_card;
+
+          let cardDescription = document.createElement('p');
+          cardDescription.className = "card-text";
+          cardDescription.textContent = card.Message;
+
+          let cardText = document.createElement('p');
+          cardText.className = "card-text";
+          let smallText = document.createElement('small');
+          smallText.className = "text-body-secondary";
+          cardText.appendChild(smallText);
+
+          cardBody.appendChild(cardTitle);
+          cardBody.appendChild(cardDescription);
+          cardBody.appendChild(cardText);
+
+          textCol.appendChild(cardBody);
+
+          row.appendChild(imgCol);
+          row.appendChild(textCol);
+
+          cardElement.appendChild(row);
+
+          cardsContainer.appendChild(cardElement);
+        });
+
+        // After adding all the cards to the container, adjust their image height
+        adjustCardImageHeight();
+        centerTextOnCard();
+      }
+
+      // Remove any potentially harmful characters from the input
+      function sanitizeInput(input) {
+        return input.replace(/[^\w\s]/gi, '');
+      }
+    };
+
+    // Call adjustCardImageHeight function every time the window is resized
+    // window.addEventListener('resize', adjustCardImageHeight);
+
+    // Call adjustCardImageHeight and centerTextOnCard functions every time the window is resized
+    window.addEventListener('resize', function () {
+      adjustCardImageHeight();
+      centerTextOnCard(); // Call the function here
+    });
   </script>
 </body>
 
