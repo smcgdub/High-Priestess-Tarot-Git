@@ -298,3 +298,8 @@ button#button-addon2 {
   height: 400px;
   width: 100%;
 }
+
+/* *3x card draw */
+#contact-message {
+  display: none;
+}
