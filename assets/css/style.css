@@ -1,14 +1,14 @@
-/* Global */
+/* *Global */
 
-/* Google font */
+/* *Google font */
 
-/* Cutive font */
+/* *Cutive font */
 @import url('https://fonts.googleapis.com/css2?family=Cutive&display=swap');
 
 /* Lobster font */
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-/* Margin & padding */
+/* *Margin & padding */
 * {
   margin: 0;
   padding: 0;
@@ -87,7 +87,7 @@ body {
   text-decoration: underline;
 }
 
-/* Animate CSS */
+/* *Animate CSS */
 /* This changes all the animations globally */
 :root {
   --animate-duration: 1400ms;
@@ -107,7 +107,7 @@ ul.dropdown-menu.show {
   background-color: #212529;
 }
 
-/* Scroll to top button */
+/* *Scroll to top button */
 #scrollToTopButton {
   position: fixed;
   bottom: 20px;
@@ -279,7 +279,7 @@ button#button-addon2 {
   color: #e0b53f;
 }
 
-/* 3x Card Reading */
+/* *3x Card Reading */
 #drawButton,
 #resetButton {
   border: 1px solid #e0b53f;
@@ -293,13 +293,12 @@ button#button-addon2 {
   color: #fff
 }
 
+#contact-message {
+  display: none;
+}
+
 /* *Contact us page */
 #map {
   height: 400px;
   width: 100%;
-}
-
-/* *3x card draw */
-#contact-message {
-  display: none;
 }
