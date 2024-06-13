@@ -224,3 +224,254 @@ window.addEventListener('resize', function () {
   centerTextOnCard(); // Call the function here
 });
 // *Cards from JSON page JS code end
+
+
+// * 3x card reading JS code start 
+document.addEventListener('DOMContentLoaded', (event) => {
+
+  // variables
+  let deck = [];
+  let drawCount = 0;
+
+  // Function to adjust card image height
+  function adjustCardImageHeight() {
+    const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
+    cardImages.forEach(cardImage => {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        cardImage.style.height = "200px";
+      } else {
+        cardImage.style.height = "auto";
+      }
+    });
+  }
+
+  // function adjustCardImageHeight() {
+  //   const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
+  //   const cardTexts = document.querySelectorAll('.card-text.text-sm-center.text-md-start');
+
+  //   cardImages.forEach(cardImage => {
+  //     if (window.matchMedia("(min-width: 768px)").matches) {
+  //       cardImage.style.height = "200px";
+  //     } else {
+  //       cardImage.style.height = "auto";
+  //     }
+  //   });
+
+  //   cardTexts.forEach(cardText => {
+  //     if (window.matchMedia("(min-width: 768px)").matches) {
+  //       cardText.classList.remove('text-md-start');
+  //       cardText.classList.add('text-sm-center');
+  //     } else {
+  //       cardText.classList.add('text-sm-center');
+  //     }
+  //   });
+
+  // }
+
+  // Add event listener for window resize
+  window.addEventListener('resize', adjustCardImageHeight);
+
+  // Fetch the tarot card meanings from the JSON file
+  fetch('tarot-card-meanings-2021.json')
+    .then(response => {
+      // If the response is not ok (status is not in the range 200-299), throw an error
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // If the response is ok, parse the response body as JSON
+      return response.json();
+    })
+    .then(data => {
+      // Assign the fetched data to the deck variable
+      deck = data;
+      // Shuffle the deck
+      shuffleDeck();
+    })
+    .catch(error => {
+      // If there is an error (either in the fetch or in the then blocks), log it to the console
+      console.error('There has been a problem with your fetch operation:', error);
+    });
+
+  // Reset the reading function
+  function resetReading() {
+    // Reset the draw count
+    drawCount = 0;
+
+    // Clear the drawn cards
+    document.getElementById('cardContainer').innerHTML = '';
+
+    // Hide the contact message
+    document.getElementById('contact-message').style.display = 'none';
+
+    // Fetch the deck again
+    fetch('tarot-card-meanings-2021.json')
+
+      // Parse the JSON data
+      .then(response => response.json())
+
+      // Assign the fetched data to the deck variable
+      .then(data => {
+        deck = data; // Assign the fetched data to the deck variable
+
+        // Shuffle the deck
+        shuffleDeck();
+      });
+
+    // Enable the draw button
+    document.getElementById('drawButton').disabled = false;
+
+    // Reset the button text
+    document.getElementById('drawButton').textContent = 'Draw Card';
+  }
+
+  // Shuffle the deck function
+  function shuffleDeck() {
+
+    // Shuffle the deck
+    for (let i = deck.length - 1; i > 0; i--) {
+
+      // Generate a random number between 0 and i
+      const j = Math.floor(Math.random() * (i + 1));
+
+      // Swap the cards at positions i and j
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+  }
+
+  // Draw a card function
+  function drawCard() {
+    // If the deck is empty or the draw count is 3, disable the draw button
+    if (deck.length === 0 || drawCount >= 3) {
+      // Disable the draw button
+      document.getElementById('drawButton').disabled = true;
+      // Return from the function
+      return;
+    }
+
+    // Pop a card from the deck
+    const card = deck.pop();
+
+    // Create new card structure
+    // Create a new div element for the card
+    const cardElement = document.createElement('div');
+
+    // Add Bootstrap classes to the card element for styling
+    cardElement.className = "card mb-3";
+
+    // Set the maximum width of the card to 80% of its parent element
+    cardElement.style.maxWidth = "80%";
+
+    // Center the card horizontally within its parent element
+    cardElement.style.margin = "auto";
+
+    // Create a new div element for the row within the card
+    const row = document.createElement('div');
+
+    // Add Bootstrap classes to the row element for styling
+    row.className = "row g-0";
+
+    // Append the row element to the card element
+    cardElement.appendChild(row);
+
+    // Create a new div element for the image column within the row
+    const imgCol = document.createElement('div');
+
+    // Add Bootstrap classes to the image column element for styling
+    imgCol.className = "col-md-3";
+
+    // Append the image column element to the row element
+    row.appendChild(imgCol);
+
+    // Create a new img element for the card image
+    const cardImage = document.createElement('img');
+
+    // Add Bootstrap classes to the card image for styling
+    cardImage.className = "img-fluid rounded-start";
+
+    // Set the height of the card image to 200px
+    cardImage.style.height = "200px";
+
+    adjustCardImageHeight();
+
+    // Set the source of the card image to the image URL from the card data
+    cardImage.src = card.image;
+
+    // Append the card image to the image column
+    imgCol.appendChild(cardImage);
+
+    // Create a new div element for the text column within the row
+    const textCol = document.createElement('div');
+
+    // Add Bootstrap classes to the text column for styling and alignment
+    textCol.className = "col-md-9 d-flex align-items-center";
+
+    // Append the text column to the row
+    row.appendChild(textCol);
+
+    // Create a new div element for the card body within the text column
+    const cardBody = document.createElement('div');
+
+    // Add Bootstrap class to the card body for styling
+    cardBody.className = "card-body";
+
+    // Append the card body to the text column
+    textCol.appendChild(cardBody);
+
+    // Create a new h5 element for the card title within the card body
+    const cardTitle = document.createElement('h5');
+
+    // Add Bootstrap class to the card title for styling
+    cardTitle.className = "card-title";
+
+    // Add the titles for each card
+    // Initialize an array of card titles
+    const titles = ['The Past', 'The Present', 'The Future'];
+
+    // Set the text content of the card title to the corresponding title from the titles array and the Tarot card name
+    cardTitle.textContent = titles[drawCount] + ":  " + card.Tarot_card;
+
+    // Append the card title to the card body
+    cardBody.appendChild(cardTitle);
+
+    // Create a new paragraph element for the card description
+    const cardDescription = document.createElement('p');
+
+    // Add Bootstrap class to the card description for styling
+    cardDescription.className = "card-text";
+
+    // Set the text content of the card description to the message from the card data
+    cardDescription.textContent = card.Message;
+
+    // Append the card description to the card body
+    cardBody.appendChild(cardDescription);
+
+    // Create a new paragraph element for additional card text
+    const cardText = document.createElement('p');
+
+    // Add Bootstrap class to the additional card text for styling
+    cardText.className = "card-text";
+
+    // Append the additional card text to the card body
+    cardBody.appendChild(cardText);
+
+    // Append the card element to the card container
+    document.getElementById('cardContainer').appendChild(cardElement);
+
+    // Increment the draw count
+    drawCount++;
+
+    // Update the text content of the draw button to reflect the current draw count
+    document.getElementById('drawButton').textContent = `Draw Card (x${drawCount})`;
+
+    // If the draw count is 3, display the contact message
+    if (drawCount === 3) {
+      document.getElementById('contact-message').style.display = 'block';
+    }
+  }
+
+  // Add event listeners to the draw and reset buttons
+  shuffleDeck();
+  document.getElementById('drawButton').addEventListener('click', drawCard);
+  document.getElementById('resetButton').addEventListener('click', resetReading);
+});
+// * 3x card reading JS code end
