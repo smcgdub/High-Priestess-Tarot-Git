@@ -581,20 +581,24 @@
       // Add event listener for window resize
       window.addEventListener('resize', adjustCardImageHeight);
 
-      // Fetch the data from the JSON file
+      // Fetch the tarot card meanings from the JSON file
       fetch('tarot-card-meanings-2021.json')
         .then(response => {
+          // If the response is not ok (status is not in the range 200-299), throw an error
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
+          // If the response is ok, parse the response body as JSON
           return response.json();
         })
         .then(data => {
-          deck = data; // Assign the fetched data to the deck variable
+          // Assign the fetched data to the deck variable
+          deck = data;
           // Shuffle the deck
           shuffleDeck();
         })
         .catch(error => {
+          // If there is an error (either in the fetch or in the then blocks), log it to the console
           console.error('There has been a problem with your fetch operation:', error);
         });
 
@@ -653,50 +657,123 @@
           // Return from the function
           return;
         }
+
+        // Pop a card from the deck
         const card = deck.pop();
+
         // Create new card structure
+        // Create a new div element for the card
         const cardElement = document.createElement('div');
+
+        // Add Bootstrap classes to the card element for styling
         cardElement.className = "card mb-3";
+
+        // Set the maximum width of the card to 80% of its parent element
         cardElement.style.maxWidth = "80%";
+
+        // Center the card horizontally within its parent element
         cardElement.style.margin = "auto";
+
+        // Create a new div element for the row within the card
         const row = document.createElement('div');
+
+        // Add Bootstrap classes to the row element for styling
         row.className = "row g-0";
+
+        // Append the row element to the card element
         cardElement.appendChild(row);
+
+        // Create a new div element for the image column within the row
         const imgCol = document.createElement('div');
+
+        // Add Bootstrap classes to the image column element for styling
         imgCol.className = "col-md-3";
+
+        // Append the image column element to the row element
         row.appendChild(imgCol);
+
+        // Create a new img element for the card image
         const cardImage = document.createElement('img');
+
+        // Add Bootstrap classes to the card image for styling
         cardImage.className = "img-fluid rounded-start";
+
+        // Set the height of the card image to 200px
         cardImage.style.height = "200px";
 
         adjustCardImageHeight();
 
+        // Set the source of the card image to the image URL from the card data
         cardImage.src = card.image;
+
+        // Append the card image to the image column
         imgCol.appendChild(cardImage);
+
+        // Create a new div element for the text column within the row
         const textCol = document.createElement('div');
+
+        // Add Bootstrap classes to the text column for styling and alignment
         textCol.className = "col-md-9 d-flex align-items-center";
+
+        // Append the text column to the row
         row.appendChild(textCol);
+
+        // Create a new div element for the card body within the text column
         const cardBody = document.createElement('div');
+
+        // Add Bootstrap class to the card body for styling
         cardBody.className = "card-body";
+
+        // Append the card body to the text column
         textCol.appendChild(cardBody);
+
+        // Create a new h5 element for the card title within the card body
         const cardTitle = document.createElement('h5');
+
+        // Add Bootstrap class to the card title for styling
         cardTitle.className = "card-title";
+
         // Add the titles for each card
+        // Initialize an array of card titles
         const titles = ['The Past', 'The Present', 'The Future'];
+
+        // Set the text content of the card title to the corresponding title from the titles array and the Tarot card name
         cardTitle.textContent = titles[drawCount] + ":  " + card.Tarot_card;
+
+        // Append the card title to the card body
         cardBody.appendChild(cardTitle);
+
+        // Create a new paragraph element for the card description
         const cardDescription = document.createElement('p');
+
+        // Add Bootstrap class to the card description for styling
         cardDescription.className = "card-text";
+
+        // Set the text content of the card description to the message from the card data
         cardDescription.textContent = card.Message;
+
+        // Append the card description to the card body
         cardBody.appendChild(cardDescription);
+
+        // Create a new paragraph element for additional card text
         const cardText = document.createElement('p');
+
+        // Add Bootstrap class to the additional card text for styling
         cardText.className = "card-text";
-        // cardText.innerHTML = '<small class="text-body-secondary">Last updated 3 mins ago</small>';
+
+        // Append the additional card text to the card body
         cardBody.appendChild(cardText);
+
+        // Append the card element to the card container
         document.getElementById('cardContainer').appendChild(cardElement);
+
+        // Increment the draw count
         drawCount++;
+
+        // Update the text content of the draw button to reflect the current draw count
         document.getElementById('drawButton').textContent = `Draw Card (x${drawCount})`;
 
+        // If the draw count is 3, display the contact message
         if (drawCount === 3) {
           document.getElementById('contact-message').style.display = 'block';
         }
