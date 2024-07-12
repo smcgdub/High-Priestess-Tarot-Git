@@ -378,14 +378,18 @@ body{background-color:#f5f6f8;}#header-content{background-color:rgba(27,29,29,1)
 	<div class="widget-content"><h2>Contact</h2></div>
 </div><div class="widget widget-text " id="widget-69ebbde2-ab87-e341-8b1c-f7f2e1d2406b">
 
-	<!-- <div class="widget-content"><p>Contact by phone, by email or fill in the form below for more information and to enquire about availability for a &nbsp;personal Tarot reading.</p> -->
+	<!-- <div class="widget-content">          <!-- Tarot card description -->
+          <p>Contact by phone, by email or fill in the form below for more information and to enquire about availability for a &nbsp;personal Tarot reading.</p> -->
 
-<div class="widget-content"><p>Contact by phone or by email for more information and to enquire about availability for a &nbsp;personal Tarot reading.</p>
+<div class="widget-content">          <!-- Tarot card description -->
+          <p>Contact by phone or by email for more information and to enquire about availability for a &nbsp;personal Tarot reading.</p>
 
-<p><span style="font-weight: bold;">E-mail:</span> <a href="mailto:readings&#64;highpriestesstarot.co.uk?subject=Tarot%20Reading%3A%20Enquiry">readings@highpriestesstarot.co.uk</a></p>
+          <!-- Tarot card description -->
+          <p><span style="font-weight: bold;">E-mail:</span> <a href="mailto:readings&#64;highpriestesstarot.co.uk?subject=Tarot%20Reading%3A%20Enquiry">readings@highpriestesstarot.co.uk</a></p>
 
 
-<p><span style="font-weight: bold;">Phone</span>: +447513 676484</p></div>
+          <!-- Tarot card description -->
+          <p><span style="font-weight: bold;">Phone</span>: +447513 676484</p></div>
 </div><div class="widget widget-contact " id="widget-4daf258f-404a-2b80-f439-74308e485005">
 	<div class="widget-content">
 	
@@ -461,22 +465,30 @@ body{background-color:#f5f6f8;}#header-content{background-color:rgba(27,29,29,1)
 </div></td><td class="widget-columns-column" style="width: 25%"><div class="widget widget-text " id="widget-2b9bf2dc-435f-4a5a-be0a-11c4d106252b">
 	<div class="widget-content"><h2>30-min Tarot reading</h2>
 <div>
-<p><span style="font-weight: bold;">&pound;40</span></p>
-<p>A personalised tarot card reading looking at past, present and future influences on your life questions. Providing insight, advice, focus and direction.</p>
-<p><a class=" link" href="../contact-location/">Request a 30-min reading</a></p>
+          <!-- Tarot card description -->
+          <p><span style="font-weight: bold;">&pound;40</span></p>
+          <!-- Tarot card description -->
+          <p>A personalised tarot card reading looking at past, present and future influences on your life questions. Providing insight, advice, focus and direction.</p>
+          <!-- Tarot card description -->
+          <p><a class=" link" href="../contact-location/">Request a 30-min reading</a></p>
 </div></div>
 </div></td><td class="widget-columns-column" style="width: 25.000000000000004%"><div class="widget widget-text " id="widget-bcd3630c-144d-4035-8bd8-9d56560a202f">
 	<div class="widget-content"><h2>1 hour Tarot reading</h2>
 <div>
-<p><span style="font-weight: bold;">&pound;70</span><br />A personalised tarot card reading looking at past, present and future influences on your life questions. Providing deep insight, advice, focus and direction.</p>
-<p><a class=" link" href="../contact-location/">Request a 1 hour reading</a></p>
+          <!-- Tarot card description -->
+          <p><span style="font-weight: bold;">&pound;70</span><br />A personalised tarot card reading looking at past, present and future influences on your life questions. Providing deep insight, advice, focus and direction.</p>
+          <!-- Tarot card description -->
+          <p><a class=" link" href="../contact-location/">Request a 1 hour reading</a></p>
 </div></div>
 </div></td><td class="widget-columns-column" style="width: 25%"><div class="widget widget-text " id="widget-068a1e37-86b3-00b7-9953-704d54376636">
 	<div class="widget-content"><h2>Party Tarot readers</h2>
 <div>
-<p><span style="font-weight: bold;">&pound; enquire</span></p>
-<p>Book a Tarot card reader for live readings at your next party or event! We can offer 3-card readings or in-depth spreads, depending on the type of event and number of guests. Pricing is flexible, you pay per hour for unlimited readings, arrange a price per reading for guests, or agree a combination of both.</p>
-<p><a class=" link" href="../contact-location/">Request a Party Tarot reader</a></p>
+          <!-- Tarot card description -->
+          <p><span style="font-weight: bold;">&pound; enquire</span></p>
+          <!-- Tarot card description -->
+          <p>Book a Tarot card reader for live readings at your next party or event! We can offer 3-card readings or in-depth spreads, depending on the type of event and number of guests. Pricing is flexible, you pay per hour for unlimited readings, arrange a price per reading for guests, or agree a combination of both.</p>
+          <!-- Tarot card description -->
+          <p><a class=" link" href="../contact-location/">Request a Party Tarot reader</a></p>
 </div></div>
 </div></td></tr></table>
 
@@ -499,7 +511,8 @@ body{background-color:#f5f6f8;}#header-content{background-color:rgba(27,29,29,1)
 			<div id="footer-content">
 				<div class="container-content-inner" id="footer-content-inner">
 	<table class="widget-columns-table"><tr><td class="widget-columns-column" style="width: 50%"><div class="widget widget-text " id="widget-19d33a72-eaad-37b6-3923-275e0f9b4155">
-	<div class="widget-content"><p><a class=" link" href="http://www.bestpsychicdirectory.com" target="_blank"><span class="image-block  caption-over-image" style="float: left; margin-right: 20px; width:150px;"><img id="mce-1981" title="The High Priestess Tarot is listed on the Best Psychic Directory" src="../attachments/Image/bpd-logo-250.jpg?template=generic" alt="The High Priestess Tarot is listed on the Best Psychic Directory" width="150" height="70"></img><span>The High Priestess Tarot is listed on the Best Psychic Directory</span></span></a></p></div>
+	<div class="widget-content">          <!-- Tarot card description -->
+          <p><a class=" link" href="http://www.bestpsychicdirectory.com" target="_blank"><span class="image-block  caption-over-image" style="float: left; margin-right: 20px; width:150px;"><img id="mce-1981" title="The High Priestess Tarot is listed on the Best Psychic Directory" src="../attachments/Image/bpd-logo-250.jpg?template=generic" alt="The High Priestess Tarot is listed on the Best Psychic Directory" width="150" height="70"></img><span>The High Priestess Tarot is listed on the Best Psychic Directory</span></span></a></p></div>
 </div></td><td class="widget-columns-column" style="width: 50%"><div class="widget widget-text " id="widget-b5d620ba-b700-4eee-882e-1c33ca12cf52">
 	<div class="widget-content"><p style="text-align: right;">&copy;&nbsp;2024. The High Priestess Tarot. All Rights Reserved.</p>
 <p style="text-align: right;">Regent's Canal,&nbsp;London,&nbsp;United Kingdom&nbsp;+447513 676484</p>
