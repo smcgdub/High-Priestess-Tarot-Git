@@ -226,12 +226,9 @@ footer {
   background-image: url(/media/images/tarot-cards.jpg);
 }
 
-
-/* Footer */
 .sub-footer-bg {
   background-color: rgba(0, 0, 0, 0.2);
 }
-
 
 .custom-card-img {
   max-height: 200px;
@@ -301,4 +298,12 @@ button#button-addon2 {
 #map {
   height: 400px;
   width: 100%;
+}
+
+/* * Card meaning */
+/* Apply only when the screen width is more than 767px */
+@media (min-width: 768px) {
+  #test-image {
+    height: 200px;
+  }
 }
