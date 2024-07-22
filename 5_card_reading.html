@@ -767,7 +767,11 @@
         cardBody.appendChild(cardText);
 
         // Append the card element to the card container
-        document.getElementById('cardContainer').appendChild(cardElement);
+        const cardContainer = document.getElementById('cardContainer');
+        cardContainer.insertBefore(cardElement, cardContainer.firstChild);
+
+        // Below is the old code with the old order of old card stays at the top and the new card goes to the bottom
+        // document.getElementById('cardContainer').appendChild(cardElement);
 
         // Increment the draw count
         drawCount++;
