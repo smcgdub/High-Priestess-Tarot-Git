@@ -294,6 +294,23 @@ button#button-addon2 {
   display: none;
 }
 
+#book-save-reading-div {
+  display: none;
+}
+
+/* Book reading & save reading tabs */
+#book-reading.active,
+#save-reading.active {
+  background-color: #212529;
+  opacity: 0.9 !important;
+  color: #e0b53f;
+}
+
+button#book-reading,
+button#save-reading {
+  color: #000;
+}
+
 /* *Contact us page */
 #map {
   height: 400px;
