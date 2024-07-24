@@ -335,16 +335,3 @@ button#save-reading {
     height: 200px;
   }
 }
-
-/* !Test code for css image readjustment */
-/* Default style for mobile and below 768px width */
-/* .img-fluid.rounded-start {
-  height: auto;
-} */
-
-/* Style for screens wider than 768px */
-/* @media (min-width: 768px) {
-  .img-fluid.rounded-start {
-    height: 200px;
-  }
-} */
