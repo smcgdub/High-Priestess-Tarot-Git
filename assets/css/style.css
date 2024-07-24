@@ -127,7 +127,6 @@ ul.dropdown-menu.show {
   /* background-image: url('/media/images/index-bg-image.jpg'); */
   /* background-image: url('/media/images/HPT Banner_250kb.jpg'); */
   background-image: url('https://www.highpriestesstarot.co.uk/images/HPT Banner_250kb.jpg');
-
   height: 100vh;
   /* height: calc(100vh - 60px); */
   width: 100%;
@@ -147,23 +146,23 @@ ul.dropdown-menu.show {
 }
 
 .blob {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* animation: pulse 2s infinite; */
   border-radius: 50%;
-  margin: 10px;
+  /* margin: 10px; */
   height: 20px;
   width: 20px;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-  transform: scale(1);
-  animation: pulse 2s infinite;
-  position: fixed;
-  left: 50%;
-  bottom: 30px;
-  transform: translateX(-50%);
+  /* transform: scale(1); */
 }
 
-@keyframes pulse {
+/* @keyframes pulse {
   0% {
     transform: scale(0.95);
-    /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); */
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
   }
 
@@ -175,6 +174,18 @@ ul.dropdown-menu.show {
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+} */
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
   }
 }
 
