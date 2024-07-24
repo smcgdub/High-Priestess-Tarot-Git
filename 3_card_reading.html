@@ -797,7 +797,8 @@
         // Set the height of the card image to 200px
         cardImage.style.height = "200px";
 
-        adjustCardImageHeight();
+        // This function was moved to line 872 and called later in the code
+        // adjustCardImageHeight();
 
         // Set the source of the card image to the image URL from the card data
         cardImage.src = card.image;
@@ -866,6 +867,9 @@
 
         // Below is the old code with the old order of old card stays at the top and the new card goes to the bottom
         // document.getElementById('cardContainer').appendChild(cardElement);
+
+        // Call adjustCardImageHeight here to adjust the height of the images
+        adjustCardImageHeight();
 
         // Increment the draw count
         drawCount++;
