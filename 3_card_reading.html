@@ -632,16 +632,16 @@
       let drawCount = 0;
 
       // Function to adjust card image height
-      // function adjustCardImageHeight() {
-      //   const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
-      //   cardImages.forEach(cardImage => {
-      //     if (window.matchMedia("(min-width: 768px)").matches) {
-      //       cardImage.style.height = "200px";
-      //     } else {
-      //       cardImage.style.height = "auto";
-      //     }
-      //   });
-      // }
+      function adjustCardImageHeight() {
+        const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
+        cardImages.forEach(cardImage => {
+          if (window.matchMedia("(min-width: 768px)").matches) {
+            cardImage.style.height = "200px";
+          } else {
+            cardImage.style.height = "auto";
+          }
+        });
+      }
 
       // function adjustCardImageHeight() {
       //   const cardImages = document.querySelectorAll('.img-fluid.rounded-start');
@@ -663,9 +663,7 @@
       //       cardText.classList.add('text-sm-center');
       //     }
       //   });
-
       // }
-
 
       // Add event listener for window resize
       window.addEventListener('resize', adjustCardImageHeight);
