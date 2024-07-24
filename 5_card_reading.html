@@ -213,6 +213,93 @@
       </div>
     </div>
 
+    <!-- Row for book a reading and save my reading tabs -->
+    <div id="book-save-reading-div">
+      <div class="row">
+        <div class="col-12">
+
+          <!-- Tabbed content -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+            <!-- Book a reading tab -->
+            <li class="nav-item" role="presentation">
+
+              <!-- Book a reading tab button -->
+              <button class="nav-link active" id="book-reading" data-bs-toggle="tab" data-bs-target="#book-reading-pane"
+                type="button" role="tab" aria-controls="book-reading-pane" aria-selected="true">Book a reading</button>
+
+            </li>
+
+            <!-- Save my reading tab -->
+            <li class="nav-item" role="presentation">
+
+              <!-- Save my reading tab button -->
+              <button class="nav-link" id="save-reading" data-bs-toggle="tab" data-bs-target="#save-reading-pane"
+                type="button" role="tab" aria-controls="save-reading-pane" aria-selected="false">Save my
+                reading</button>
+
+            </li>
+
+          </ul>
+
+          <!-- Book a reading tab content -->
+          <div class="tab-content" id="myTabContent">
+
+            <!-- Book a reading tab content -->
+            <div class="tab-pane fade show active" id="book-reading-pane" role="tabpanel" aria-labelledby="book-reading"
+              tabindex="0">
+
+              <!-- Tarot card search div -->
+              <div class="input-group mb-0 mt-3">
+
+                <!-- Book a reading with Nicola -->
+                <p class="ps-3">Book an in person Tarot reading with Nicola by clicking
+
+                  <!-- Book a reading link to pricing page -->
+                  <a href="contact_us.html" class="generic-gold">Here</a>
+
+                </p>
+
+              </div>
+            </div>
+
+            <!-- Save my reading tab content -->
+            <div class="tab-pane fade" id="save-reading-pane" role="tabpanel" aria-labelledby="save-reading"
+              tabindex="0">
+
+              <!-- ! Chris is to write the perl script for collecting the email address and saving it to the database -->
+              <!-- Save my reading form -->
+              <form class="mt-3">
+
+                <!-- Save my reading instructions -->
+                <p class="ps-3 mb-2">Have your reading emailed to you, just enter your email address below
+                </p>
+
+                <!-- Save my reading div -->
+                <div class="input-group mb-3">
+
+                  <!-- Save my reading email input -->
+                  <input type="email" class="form-control ms-3" placeholder="&#64; Enter your e-mail address"
+                    aria-label="&#64; Enter your e-mail address" aria-describedby="button-addon2">
+
+                  <!-- Save my reading button -->
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+
+                    <!-- Send icon -->
+                    <i class="fa-solid fa-paper-plane"></i> Send
+
+                  </button>
+
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <!-- Row for cards drawn to be displayed -->
     <div class="row">
       <div class="col-12">
@@ -621,6 +708,9 @@
         // Hide the contact message
         document.getElementById('contact-message').style.display = 'none';
 
+        // Hide the book/save reading div
+        document.getElementById('book-save-reading-div').style.display = 'none';
+
         // Fetch the deck again
         fetch('tarot-card-meanings-2021.json')
 
@@ -788,6 +878,12 @@
         // If the draw count is 5, display the contact message
         if (drawCount === 5) {
           document.getElementById('contact-message').style.display = 'block';
+          // Display the book/save reading div
+          document.getElementById('book-save-reading-div').style.display = 'block';
+          // Set the width of the book/save reading div to 80%
+          document.getElementById('book-save-reading-div').style.width = "80%";
+          // Center the book/save reading div horizontally
+          document.getElementById('book-save-reading-div').style.margin = "auto";
         }
       }
 
