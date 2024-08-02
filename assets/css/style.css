@@ -228,6 +228,17 @@ a:focus {
   border: none;
 }
 
+.carousel-item img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  /* Ensures the image covers the container without distortion */
+}
+
+.carousel {
+  height: 100vh;
+}
+
 /* *Footer */
 footer {
   background: #212529;
