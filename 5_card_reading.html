@@ -832,10 +832,10 @@
 
         // Add the titles for each card
         // Initialize an array of card titles
-        const titles = ['', '', '', '', ''];
+        const titles = ['At Hand', 'The Past', 'Guiding You', 'Hidden', 'The Future'];
 
         // Set the text content of the card title to the corresponding title from the titles array and the Tarot card name
-        cardTitle.textContent = titles[drawCount] + "" + card.Tarot_card;
+        cardTitle.textContent = titles[drawCount] + ": " + card.Tarot_card;
 
         // Append the card title to the card body
         cardBody.appendChild(cardTitle);
