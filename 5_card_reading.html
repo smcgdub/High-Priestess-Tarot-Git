@@ -727,7 +727,7 @@
         document.getElementById('drawButton').disabled = false;
 
         // Reset the button text
-        document.getElementById('drawButton').textContent = 'Draw Card';
+        document.getElementById('drawButton').textContent = 'Choose Card';
       }
 
       // Shuffle the deck function
@@ -875,7 +875,7 @@
         drawCount++;
 
         // Update the text content of the draw button to reflect the current draw count
-        document.getElementById('drawButton').textContent = `Draw Card (${drawCount})`;
+        document.getElementById('drawButton').textContent = `Choose Card (${drawCount})`;
 
         // If the draw count is 5, display the contact message
         if (drawCount === 5) {
